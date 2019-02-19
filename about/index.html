@@ -123,16 +123,12 @@
             
       <div class="nav2">
           
-              <a class="nav2item" data-title="Email" href="mailto:1755811882@qq.com" target="_parent" title="Email">
+              <a class="nav2item" data-title="Email" href="mailto:1121147896@qq.com" target="_parent" title="Email">
                 <i class="icon icon-lg icon-envelope-o envelope-o"></i>
               </a>
           
-              <a class="nav2item" data-title="Github" href="https://github.com/tomotoes" target="_blank" title="Github">
+              <a class="nav2item" data-title="Github" href="https://github.com/WHchuan123" target="_blank" title="Github">
                 <i class="icon icon-lg icon-github github"></i>
-              </a>
-          
-              <a class="nav2item" data-title="微博" href="https://weibo.com/u/6179399347" target="_blank" title="微博">
-                <i class="icon icon-lg icon-weibo weibo"></i>
               </a>
           
 
@@ -158,7 +154,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Búsqueda">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -182,7 +178,7 @@
                     <h1 id="pagetitle" class="archivestitle"></h1>
                     <script>
                         if(location.href.indexOf('about')!=-1){
-                            pagetitle.textContent = '一个坏掉的番茄';
+                            pagetitle.textContent = 'psimonw';
                         }else if(location.href.indexOf('tags')!=-1||location.href.indexOf('categories')!=-1){
                             var a=location.href.substring(location.href.length-5,location.href.length-1);
                             if(a==='tags'){
@@ -203,13 +199,8 @@
 <div class="container body-wrap">
     <article class="page-article fade" itemprop="blogPage">
         
-            <div class="card page-about-me flex-row">
-                <a href="/" class="avatar waves-effect waves-circle waves-light"><img src="/img/avatar.jpg"></a>
-                <div class="content flex-col">
-                    <p><strong>pinkex</strong></p>
-                    <p><em>go slowly</em></p>
-                    <p>业精于勤荒于嬉，行成于思毁于随</p>
-                </div>
+            <div class="post-content page-content" id="page-content" itemprop="pageContent">
+                
             </div>
         
 
@@ -220,6 +211,22 @@
     
 
     
+<section class="comments" id="comments">
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+        var gitalk = new Gitalk({
+            clientID: '',
+            clientSecret: '',
+            repo: '',
+            owner: '',
+            admin: ['']
+        });
+        gitalk.render('gitalk-container');
+    </script>
+</section>
+
 
     
 
@@ -233,9 +240,9 @@
     <div class="footer-content">
         <span class="power">
             <i class="icon icon-lg icon-copyright"></i>
-            2017
+            2019
             <i class="icon icon-lg icon-heart"></i>
-            <a href="http://WHchuan123.github.io">tomotoes.com</a>
+            <a href="http://WHchuan123.github.io">WHchuan123.github.io</a>
             <br>
             Power by
             <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
@@ -265,7 +272,7 @@
         </span>
         <br>
 
-        <span class="license">Este blog está licenciado bajo una <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">licencia internacional Creative Commons Attribution 4.0</a>.</span>
+        <span class="license">This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
     </div>
 </footer>
 
@@ -361,7 +368,7 @@ $("#name").bumpyText();
 
 /* 网站运行时间 */
 setInterval(function () {
-	setTime("2017/10/11");
+	setTime("2019/2/19");
 }, 1000);
 
 /* 文章块的淡出 */
@@ -390,6 +397,27 @@ if (window.console && window.console.log) {
 
 
 <!-- 公式渲染 -->
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 
 
