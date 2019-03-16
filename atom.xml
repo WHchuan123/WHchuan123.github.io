@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://WHchuan123.github.io/"/>
-  <updated>2019-02-19T07:23:48.902Z</updated>
+  <updated>2019-03-16T13:29:39.938Z</updated>
   <id>http://WHchuan123.github.io/</id>
   
   <author>
@@ -17,19 +17,45 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
+    <title>Websites</title>
     <link href="http://WHchuan123.github.io//posts/undefined/"/>
     <id>http://WHchuan123.github.io//posts/undefined/</id>
-    <published>2019-02-19T07:23:48.902Z</published>
-    <updated>2019-02-19T07:23:48.902Z</updated>
+    <published>2019-03-16T13:26:26.995Z</published>
+    <updated>2019-03-16T13:29:39.938Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<p>这里是一些有用的网站们：</p><p><a href="http://www.mohu.org/info/symbols/symbols.htm" target="_blank" rel="noopener">latex数学公式汇总</a></p><p><a href="http://www.mohu.org/info/lshort-cn.pdf" target="_blank" rel="noopener">latex语法总结</a></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+        &lt;p&gt;这里是一些有用的网站们：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.mohu.org/info/symbols/symbols.htm&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;latex数学公式汇总&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://WHchuan123.github.io//posts/undefined/"/>
+    <id>http://WHchuan123.github.io//posts/undefined/</id>
+    <published>2019-02-19T07:23:48.902Z</published>
+    <updated>2019-03-16T13:17:10.339Z</updated>
+    
+    <content type="html"><![CDATA[<p>重新回到了写博客的日子！没有一个地方倾诉自己的想法真的很是令人难受。</p><p>是不是应该做点测试？</p><p>数学公式：$e ^ {\pi i} + 1 =  0$</p><p>数学公式：<br>$$<br>e ^ {\pi i} + 1 = 0<br>$$<br>行内代码：</p><p><code>nmdp</code></p><p>传送门：</p><p><a href="baidu.com">baidu</a></p><p>Emoji</p><p>:smile:</p><p>:abc:</p><p>这。看来只能手动emoji了:(</p><p>那就……开始吧！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;重新回到了写博客的日子！没有一个地方倾诉自己的想法真的很是令人难受。&lt;/p&gt;
+&lt;p&gt;是不是应该做点测试？&lt;/p&gt;
+&lt;p&gt;数学公式：$e ^ {\pi i} + 1 =  0$&lt;/p&gt;
+&lt;p&gt;数学公式：&lt;br&gt;$$&lt;br&gt;e ^ {\pi i} + 1 = 0&lt;br&gt;$$&lt;b
       
     
     </summary>
