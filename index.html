@@ -77,7 +77,7 @@
         <hgroup class="introduce">
           <h5 class="nickname" id="name">pinkex</h5>
           
-            <div id="yiyanmotto" class="motto">&nbsp;</div>
+            <div id="mymotto" class="motto"></div>
           
         </hgroup>
       </div>
@@ -153,7 +153,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -188,6 +188,42 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-共勉" class="article-card article-type-post" itemprop="blogPost">
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a href="/2019/03/17/共勉/">共勉</a>
+    </h3>
+  
+
+
+
+
+     <div class="post-meta">
+        <time class="post-time" title="2019-03-17 08:40:55" datetime="2019-03-17T00:40:55.619Z" itemprop="datePublished">2019-03-17</time>
+
+    </div>
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        曾经在某吧里面看到了一个远古帖子，许多湖北省的oier...
+    
+        <div>
+            <a href="/2019/03/17/共勉/" class="post-more waves-button">
+                Continue reading...
+            </a>
+        </div>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-websites" class="article-card article-type-post" itemprop="blogPost">
 
     
@@ -216,9 +252,15 @@ la...
     
         <div>
             <a href="/2019/03/16/websites/" class="post-more waves-button">
-                続きを読む…
+                Continue reading...
             </a>
         </div>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网站/">网站</a></li></ul>
+
     </div>
     
 </article>
@@ -267,7 +309,7 @@ la...
         </span>
         <br>
 
-        <span class="license">このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        <span class="license">This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
     </div>
 </footer>
 
@@ -371,7 +413,12 @@ postshow();
 
 /* 座右铭 */
 
-   getHitokoto();
+    elasticText({
+        id: "mymotto",
+        duration: 100,
+        effact: "easeOut",
+        content: ""
+    });
 
 
 

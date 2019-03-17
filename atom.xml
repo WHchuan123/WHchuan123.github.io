@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://WHchuan123.github.io/"/>
-  <updated>2019-03-16T15:33:40.083Z</updated>
+  <updated>2019-03-17T01:08:57.210Z</updated>
   <id>http://WHchuan123.github.io/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>共勉</title>
+    <link href="http://WHchuan123.github.io/2019/03/17/%E5%85%B1%E5%8B%89/"/>
+    <id>http://WHchuan123.github.io/2019/03/17/共勉/</id>
+    <published>2019-03-17T00:40:55.619Z</published>
+    <updated>2019-03-17T01:08:57.210Z</updated>
+    
+    <content type="html"><![CDATA[<p>曾经在某吧里面看到了一个远古帖子，许多湖北省的oier在对省队选拔中出现的偏差非常不满。不管孰错孰对，vfk在那里说的一段话令我惊叹。惊叹后是沉思。</p><p>节选如下：</p><blockquote><p>我认为信息学竞赛考察的是信息学的思想，为了考察思想就得用一些手段。<br>举一个简单的例子：<br>XXXXXXXXXXXXXXXXXX，求最小值。<br>假设这题方法是dp。<br>这是纯信息题，认同吧。<br>但是这样有缺点：既然是最小值嘛，有人可以绕开dp，用随机化之类的东西混分。</p><p>于是就有了：<br>XXXXXXXXXXXXXXXXXX，求方案数。<br>XXXXXXXXXXXXXXXXXX，求期望。<br>我们假设还是能用类似的dp做。<br>于是LZ可能就不服了：不公平！数学题！<br>min有一个性质：min(a, b, c) = min(min(a, b), min(b, c))<br>但是加法没有：a + b + c != (a + b) + (b + c)<br>涉及到加法来把所有的解合并起来的东西，都要求你不重不漏，从而更有挑战性。<br>并且避免了随机化骗分。</p><p>而且我觉得期望特别厉害，有一些min的性质：<br>min(ka, kb) = kmin(a, b) =&gt; E(kX) = kE(X)<br>min(a + x, a + y, b + x, b + y) = min(a, b) + min(x, y) =&gt; E(X + Y) = E(X) + E(Y)<br>枚举最小答案判定是否有解 =&gt; EX = Pr(X &gt;= 0) + Pr(X &gt;= 1) + Pr(X &gt;= 2) + …<br>所以期望有时候是绝佳的替代品。只要约定俗成假定各位OI选手都知道期望的性质。而事实上，我们高中课本上面还是提了几句的。（虽然讲得比较坑 = =……无力吐槽）<br>如果你专注竞赛那么迟早会在做题中知道期望的性质，如果你专注文化课那么迟早会在数学课上遇见它。</p><p>所以我要是出题人，如果我想考dp，我肯定更愿意出方案数和期望，而不是最小值。<br>这是真的是数学题吗？有时候看起来觉得显然是数学题的题目，只是信息学的包装。</p><p>再论实际用途。<br>为什么快速排序的期望时间复杂度是O(n log n)而冒泡排序不是？<br>为什么双旋splay的时间复杂度是均摊O(log n)而单旋的不是？<br>为什么并查集的时间复杂度里有个某个阿克曼函数的反函数?<br>为什么线段树的区间查询操作是O(log n)？<br>我估计你没看过证明。不然就不会说出“只有复旦注重数学”。<br>你说数据结构应该算纯信息学。那他的证明中可是货真价实的数学哦。<br>我想问，难道那些发明这些科技的人是用一种“纯粹的算法能力”搞出这些东西，然后再马马虎虎糊弄一下数学证明的吗？<br>显然不是。<br>物理学中有一句令人印象深刻的道理：无论是什么奇谈怪论，只要他能用实验证明是对的，我们就接受他。实验是检验真理的唯一标准。<br>你看，相对论那么颠覆性的东西现在也被人接受了。<br>同样我们也可以说：既然数学给计算机带来了科技，带来了效率上的提升，那好，我们就可以认定数学是信息学思想的一部分。<br>信息学需要数学，但不是纯数学里的数学，也不是物理里的数学。我认为基本上各个领域都需要数学作为支撑，只是用的方面不同。<br>而我认为，信息学竞赛并不是在培养只会写代码的码农。是的，代码能力很重要，但并不只是这些。还是在培养的是能用信息学的思想去创造新的科技的计算机大师。</p><p>其实我曾经也一度对OI题中混入数学题感到愤怒。<br>但是静下心来多接触一下我明白了其实并不是在考数学，那个东西就是信息学。</p><p>不知道你有没有知道昨天的题解。如果没有建议先去看看吧。<br>仔细想想，于是你会明白没有人在用数学坑OIer。</p><p>（说句题外话，现役中小部分比如pyx、以及dzy loves math之流除外。你们都太神了 T_T）</p><p>不过我觉得质疑没有数据结构是对的啊。我赞同。<br>但是我想说第三题的部分分里有树状数组。<br>粗略点理解数据结构为何物，第二题的dp中用到了前缀和。（至少我用了……T_T）<br>当然第一试没有出数据结构不代表第二试不会出。<br>如果两试都出现了真数据结构题，那么我觉得是否太频繁了这个值得探讨。<br>其实我觉得有时候数据结构题没出好就变成了裸题，OI赛场变成了打字比赛，AC者众。<br>而且数据结构题的解集多半是多项式级的，而最优化问题、方案数、期望之类多半都是指数级的解集，从而更好出数据卡暴力。综上出题人觉得宁可不出数据结构。</p><p>这是我个人对于信息学的见解 = =……求轻喷。<br>我真心希望湖北能出几位计算机大师而不是“为进省队头破血流者”。<br>所以我才会说这么多……</p></blockquote><p>在这以前，只知道vfk是OI界的master，但是也仅仅是master罢了。</p><p>但是看了这段话，我才明白，oier刚开始学OI的目的是不太一样的，但是慢慢地，到了高中以后，竞赛性质凸显，功利化也在所难免。也许我们正在慢慢失去初心……</p><p>初心难守是事实，但是也许就像vfk这样，越是厉害的人，越能懂得OI的意义所在。</p><p>对我而言，OI不仅仅是竞赛。OI还是生活。有时我会庆幸我当初没有去其他竞赛。或许我去搞数竞也能混得很好。但是可能又是一个完全不一样的世界了。</p><p>换句话说，我对我的现状不说很满足，但是满意了。毕竟我还有梦可追。<code>I&#39;am still young.</code></p><p>以此共勉。活得不必很精彩，但至少要有意义。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;曾经在某吧里面看到了一个远古帖子，许多湖北省的oier在对省队选拔中出现的偏差非常不满。不管孰错孰对，vfk在那里说的一段话令我惊叹。惊叹后是沉思。&lt;/p&gt;
+&lt;p&gt;节选如下：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我认为信息学竞赛考察的是信息学的思想，为了考察思想就得用一
+      
+    
+    </summary>
+    
+      <category term="生活" scheme="http://WHchuan123.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>websites</title>
     <link href="http://WHchuan123.github.io/2019/03/16/websites/"/>
     <id>http://WHchuan123.github.io/2019/03/16/websites/</id>
     <published>2019-03-16T13:26:26.995Z</published>
-    <updated>2019-03-16T15:33:40.083Z</updated>
+    <updated>2019-03-17T00:34:23.261Z</updated>
     
     <content type="html"><![CDATA[<p>这里是一些有用的网站们：</p><p><a href="http://www.mohu.org/info/symbols/symbols.htm" target="_blank" rel="noopener">latex数学公式汇总</a></p><p><a href="http://www.mohu.org/info/lshort-cn.pdf" target="_blank" rel="noopener">latex语法总结</a></p>]]></content>
     
@@ -36,6 +62,10 @@
     
     </summary>
     
+      <category term="OI" scheme="http://WHchuan123.github.io/categories/OI/"/>
+    
+    
+      <category term="网站" scheme="http://WHchuan123.github.io/tags/%E7%BD%91%E7%AB%99/"/>
     
   </entry>
   
