@@ -39,28 +39,4 @@
     
   </entry>
   
-  <entry>
-    <title>hello world</title>
-    <link href="http://WHchuan123.github.io/2019/02/19/helloworld/"/>
-    <id>http://WHchuan123.github.io/2019/02/19/helloworld/</id>
-    <published>2019-02-19T07:23:48.902Z</published>
-    <updated>2019-03-16T23:51:51.880Z</updated>
-    
-    <content type="html"><![CDATA[<p>重新回到了写博客的日子！没有一个地方倾诉自己的想法真的很是令人难受。</p><p>是不是应该做点测试？</p><p>数学公式：$e ^ {\pi i} + 1 =  0$</p><p>数学公式：<br>$$<br>e ^ {\pi i} + 1 = 0<br>$$<br>行内代码：</p><p><code>nmdp</code></p><p>传送门：</p><p><a href="https://www.baidu.com/" target="_blank" rel="noopener">baidu</a></p><p>Emoji</p><p>:smile:</p><p>:abc:</p><p>这。看来只能手动emoji了:(</p><p>那就……开始吧！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;重新回到了写博客的日子！没有一个地方倾诉自己的想法真的很是令人难受。&lt;/p&gt;
-&lt;p&gt;是不是应该做点测试？&lt;/p&gt;
-&lt;p&gt;数学公式：$e ^ {\pi i} + 1 =  0$&lt;/p&gt;
-&lt;p&gt;数学公式：&lt;br&gt;$$&lt;br&gt;e ^ {\pi i} + 1 = 0&lt;br&gt;$$&lt;b
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
 </feed>
