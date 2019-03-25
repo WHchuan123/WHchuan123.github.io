@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://WHchuan123.github.io/"/>
-  <updated>2019-03-21T10:33:00.149Z</updated>
+  <updated>2019-03-25T11:19:40.807Z</updated>
   <id>http://WHchuan123.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>zjoi2019游记</title>
+    <link href="http://WHchuan123.github.io/2019/03/25/zjoi2019%E6%B8%B8%E8%AE%B0/"/>
+    <id>http://WHchuan123.github.io/2019/03/25/zjoi2019游记/</id>
+    <published>2019-03-25T11:17:50.805Z</published>
+    <updated>2019-03-25T11:19:40.807Z</updated>
+    
+    <content type="html"><![CDATA[<p>zjoi2019正在进行中……</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;zjoi2019正在进行中……&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="OI" scheme="http://WHchuan123.github.io/categories/OI/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>随感</title>
