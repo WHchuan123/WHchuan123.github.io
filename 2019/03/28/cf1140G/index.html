@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta charset="utf-8">
+    
+    
+    
+    <title>cf1140G | psimonw | go slowly</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    
+    <meta name="theme-color" content="#77AAFF">
+    
+    
+    <meta name="keywords" content="题解,数据结构">
+    
+    
+
+    
+
+    <!-- Baidu Push -->
+<script>
+	(function(){
+		var bp = document.createElement('script');
+		var curProtocol = window.location.protocol.split(':')[0];
+		if (curProtocol === 'https') {
+			bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+		}
+		else {
+			bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+		}
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(bp, s);
+	})();
+
+	var _hmt = _hmt || [];
+</script>
+
+
+
+    
+    <meta name="description" content="题意 给两棵同构的树，将同构节点之间连边，构成一张图。所有边有边权。给出一些询问，求某两点间的最短路。  题解 设两棵树分别为T,T′T, T&amp;#x27;T,T′，同构节点们为x,x′x, x&amp;#x27;x,x′。 注意到每个询问的答案一定是从uuu在某一棵树上走，然后走到另一棵树的同构节点，再在另外一棵树上走，这样的过程重复个若干次。 在一棵树上走一定是走简单路径；走到同构节点并非就是走那条直">
+<meta name="keywords" content="题解,数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cf1140G">
+<meta property="og:url" content="http://WHchuan123.github.io/2019/03/28/cf1140G/index.html">
+<meta property="og:site_name" content="psimonw">
+<meta property="og:description" content="题意 给两棵同构的树，将同构节点之间连边，构成一张图。所有边有边权。给出一些询问，求某两点间的最短路。  题解 设两棵树分别为T,T′T, T&amp;#x27;T,T′，同构节点们为x,x′x, x&amp;#x27;x,x′。 注意到每个询问的答案一定是从uuu在某一棵树上走，然后走到另一棵树的同构节点，再在另外一棵树上走，这样的过程重复个若干次。 在一棵树上走一定是走简单路径；走到同构节点并非就是走那条直">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-28T12:36:18.321Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="cf1140G">
+<meta name="twitter:description" content="题意 给两棵同构的树，将同构节点之间连边，构成一张图。所有边有边权。给出一些询问，求某两点间的最短路。  题解 设两棵树分别为T,T′T, T&amp;#x27;T,T′，同构节点们为x,x′x, x&amp;#x27;x,x′。 注意到每个询问的答案一定是从uuu在某一棵树上走，然后走到另一棵树的同构节点，再在另外一棵树上走，这样的过程重复个若干次。 在一棵树上走一定是走简单路径；走到同构节点并非就是走那条直">
+    
+        <link rel="alternate" type="application/atom+xml" title="psimonw" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+       
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg" alt="avatar">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname" id="name">pinkex</h5>
+          
+            <div id="mymotto" class="motto"></div>
+          
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+              <li class="waves-block waves-effect">
+                  <a href="/">
+                    <i class="icon icon-lg icon-home"></i>
+                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/archives">
+                    <i class="icon icon-lg icon-archives"></i>
+                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/categories">
+                    <i class="icon icon-lg icon-th-list"></i>
+                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/tags">
+                    <i class="icon icon-lg icon-tags"></i>
+                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/about">
+                    <i class="icon icon-lg icon-smile-o"></i>
+                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+      <div class="nav2">
+          
+              <a class="nav2item" data-title="Email" href="mailto:1121147896@qq.com" target="_parent" title="Email">
+                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Github" href="https://github.com/WHchuan123" target="_blank" title="Github">
+                <i class="icon icon-lg icon-github github"></i>
+              </a>
+          
+
+            </div>
+        
+      </ul>
+        
+    </div>
+  </div>
+ 
+</aside>
+
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">cf1140G</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
+            <i class="icon icon-lg icon-rss"></i>
+        </a>
+    </div>
+</header>
+<header class="content-header post-header">
+    
+    
+    <div class="container fade-scale">
+        <div id="myheader">
+            <h1 class="title">
+                
+            </h1>
+            <h5 class="subtitle">
+                
+                
+            </h5>
+        </div>
+    </div>
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#题意"><span class="post-toc-text"> 题意</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#题解"><span class="post-toc-text"> 题解</span></a></li></ol>
+        </nav>
+    </aside>
+   
+<article id="post-cf1140G" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">cf1140G</h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2019-03-28 20:13:22" datetime="2019-03-28T12:13:22.209Z" itemprop="datePublished">2019-03-28</time>
+
+            <br id="mybreak">
+            
+	<i class="icon icon-lg icon-folder-o"></i>
+	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/OI/">OI</a></li></ul>
+
+
+            <i>·</i>
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
+</span>
+
+
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            阅读本文可能花费您&nbsp;<span class="post-count">7</span>&nbsp;分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="题意"><a class="markdownIt-Anchor" href="#题意"></a> 题意</h1>
+<p>给两棵同构的树，将同构节点之间连边，构成一张图。所有边有边权。给出一些询问，求某两点间的最短路。</p>
+<h1 id="题解"><a class="markdownIt-Anchor" href="#题解"></a> 题解</h1>
+<p>设两棵树分别为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mo separator="true">,</mo><msup><mi>T</mi><mo mathvariant="normal">′</mo></msup></mrow><annotation encoding="application/x-tex">T, T&#x27;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.946332em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span>，同构节点们为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo separator="true">,</mo><msup><mi>x</mi><mo mathvariant="normal">′</mo></msup></mrow><annotation encoding="application/x-tex">x, x&#x27;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.946332em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span>。</p>
+<p>注意到每个询问的答案一定是从<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>在某一棵树上走，然后走到另一棵树的同构节点，再在另外一棵树上走，这样的过程重复个若干次。</p>
+<p>在一棵树上走一定是走简单路径；走到同构节点并非就是走那条直接相连的边，而是最短路。</p>
+<p>先考虑最短路这么求？我们要求<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>对同构节点的最短路。</p>
+<p>可以等价转化：</p>
+<p>1.<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi mathvariant="normal">∀</mi><mrow><mi>e</mi><mo>(</mo><mi>x</mi><mo separator="true">,</mo><msup><mi>x</mi><mo mathvariant="normal">′</mo></msup><mo separator="true">,</mo><msub><mi>w</mi><mi>x</mi></msub><mo>)</mo></mrow></msub><mi>a</mi><mi>d</mi><mi>d</mi><mi>e</mi><mo>(</mo><mn>0</mn><mo separator="true">,</mo><mi>x</mi><mo separator="true">,</mo><msub><mi>w</mi><mi>x</mi></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">\forall_{e(x, x&#x27;, w_x)}adde(0, x, w_x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1052em;vertical-align:-0.3551999999999999em;"></span><span class="mord"><span class="mord">∀</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.34480000000000005em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">e</span><span class="mopen mtight">(</span><span class="mord mathdefault mtight">x</span><span class="mpunct mtight">,</span><span class="mord mtight"><span class="mord mathdefault mtight">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6828285714285715em;"><span style="top:-2.786em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mpunct mtight">,</span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.16454285714285719em;"><span style="top:-2.357em;margin-left:-0.02691em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3551999999999999em;"><span></span></span></span></span></span></span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mord mathdefault">d</span><span class="mord mathdefault">e</span><span class="mopen">(</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.02691em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></p>
+<p>2.<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi mathvariant="normal">∀</mi><mrow><mi>e</mi><mo>(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo separator="true">,</mo><msub><mi>w</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>w</mi><mn>2</mn></msub><mo>)</mo></mrow></msub><mi>a</mi><mi>d</mi><mi>d</mi><mi>e</mi><mo>(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo separator="true">,</mo><msub><mi>w</mi><mn>1</mn></msub><mo>+</mo><msub><mi>w</mi><mn>2</mn></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">\forall_{e(x, y, w_1, w_2)} adde(x, y, w_1 + w_2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1052em;vertical-align:-0.3551999999999999em;"></span><span class="mord"><span class="mord">∀</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.34480000000000005em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">e</span><span class="mopen mtight">(</span><span class="mord mathdefault mtight">x</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">y</span><span class="mpunct mtight">,</span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31731428571428577em;"><span style="top:-2.357em;margin-left:-0.02691em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mpunct mtight">,</span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31731428571428577em;"><span style="top:-2.357em;margin-left:-0.02691em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3551999999999999em;"><span></span></span></span></span></span></span><span class="mord mathdefault">a</span><span class="mord mathdefault">d</span><span class="mord mathdefault">d</span><span class="mord mathdefault">e</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02691em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02691em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></p>
+<p>然后会发现这是对的……很神奇，就可以直接一遍sssp就好啦。</p>
+<p>然后可以直接把最短路当做边权了。</p>
+<p>那如何处理一整个问题？</p>
+<p>记录<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><msub><mi>p</mi><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo separator="true">,</mo><mi>u</mi><mo separator="true">,</mo><mi>v</mi></mrow></msub></mrow><annotation encoding="application/x-tex">dp_{x, y, u, v}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.980548em;vertical-align:-0.286108em;"></span><span class="mord mathdefault">d</span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">x</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">y</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight">u</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>代表从树<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>的节点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>向上跳<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mi>y</mi></msup></mrow><annotation encoding="application/x-tex">2 ^ y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.664392em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">y</span></span></span></span></span></span></span></span></span></span></span>步且最终到达第v棵树上的最短路。其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi><mo separator="true">,</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">u, v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span>取值都是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>{</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo>}</mo></mrow><annotation encoding="application/x-tex">\{0, 1\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mclose">}</span></span></span></span>。发现可以把<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><msub><mi>p</mi><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi></mrow></msub></mrow><annotation encoding="application/x-tex">dp_{x, y}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.980548em;vertical-align:-0.286108em;"></span><span class="mord mathdefault">d</span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">x</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">y</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>看成一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mo>∗</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">2 * 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span>的矩阵。</p>
+<p>为了方便，还要记录<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">pd</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault">d</span></span></span></span>数组代表的是从上向下的最短路矩阵。</p>
+<p>最后询问的时候倍增跳一跳，矩阵重定义运算一下，然后按顺序合并即可，注意合并的顺序。</p>
+<p>复杂度<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mo>(</mo><mi>n</mi><mo>+</mo><mi>Q</mi><mo>)</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O((n + Q) \log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">Q</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> x;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;x);</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">readl</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">static</span> ll x;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;x);</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">3e5</span> + <span class="number">10</span>, M = <span class="number">2e6</span> + <span class="number">10</span>, H = <span class="number">19</span>;</span><br><span class="line"><span class="keyword">int</span> n; ll D[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Graph</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> n, tot;</span><br><span class="line">	<span class="keyword">int</span> lnk[N], nxt[M], son[M]; ll w[M];</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">init</span> <span class="params">(<span class="keyword">int</span> _n)</span> </span>&#123;</span><br><span class="line">		n = _n, tot = <span class="number">1</span>;</span><br><span class="line">		<span class="built_in">memset</span>(lnk, <span class="number">0</span>, <span class="keyword">sizeof</span> lnk);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">add</span> <span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, ll z)</span> </span>&#123;</span><br><span class="line">		nxt[++tot] = lnk[x], lnk[x] = tot, son[tot] = y, w[tot] = z;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">adde</span> <span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, ll z)</span> </span>&#123;</span><br><span class="line">		add(x, y, z), add(y, x, z); </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">sssp</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">static</span> ll dis[N];</span><br><span class="line">		<span class="keyword">static</span> <span class="keyword">bool</span> vis[N];</span><br><span class="line">		<span class="keyword">static</span> <span class="built_in">queue</span> &lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">		<span class="built_in">memset</span>(dis, <span class="number">60</span>, <span class="keyword">sizeof</span> dis), dis[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">		<span class="built_in">memset</span>(vis, <span class="number">0</span>, <span class="keyword">sizeof</span> vis), vis[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span> ( ; !q.empty(); q.pop()); q.push(<span class="number">0</span>);</span><br><span class="line">		<span class="keyword">for</span> ( ; !q.empty(); q.pop()) &#123;</span><br><span class="line">			<span class="keyword">int</span> x = q.front();</span><br><span class="line">			vis[x] = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = lnk[x]; j; j = nxt[j])</span><br><span class="line">				<span class="keyword">if</span> (dis[son[j]] &gt; dis[x] + w[j]) &#123;</span><br><span class="line">					dis[son[j]] = dis[x] + w[j];</span><br><span class="line">					<span class="keyword">if</span> (!vis[son[j]]) vis[son[j]] = <span class="number">1</span>, q.push(son[j]);</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) D[i] = dis[i];</span><br><span class="line">	&#125;</span><br><span class="line">&#125; G;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Matrix</span> &#123;</span></span><br><span class="line">	ll a[<span class="number">2</span>][<span class="number">2</span>];</span><br><span class="line">	Matrix <span class="keyword">operator</span> * (<span class="keyword">const</span> Matrix &amp;o) &#123;</span><br><span class="line">		<span class="keyword">return</span> &#123;min(a[<span class="number">0</span>][<span class="number">0</span>] + o.a[<span class="number">0</span>][<span class="number">0</span>], a[<span class="number">0</span>][<span class="number">1</span>] + o.a[<span class="number">1</span>][<span class="number">0</span>]),</span><br><span class="line">				min(a[<span class="number">0</span>][<span class="number">0</span>] + o.a[<span class="number">0</span>][<span class="number">1</span>], a[<span class="number">0</span>][<span class="number">1</span>] + o.a[<span class="number">1</span>][<span class="number">1</span>]),</span><br><span class="line">				min(a[<span class="number">1</span>][<span class="number">0</span>] + o.a[<span class="number">0</span>][<span class="number">0</span>], a[<span class="number">1</span>][<span class="number">1</span>] + o.a[<span class="number">1</span>][<span class="number">0</span>]),</span><br><span class="line">				min(a[<span class="number">1</span>][<span class="number">0</span>] + o.a[<span class="number">0</span>][<span class="number">1</span>], a[<span class="number">1</span>][<span class="number">1</span>] + o.a[<span class="number">1</span>][<span class="number">1</span>])&#125;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Tree</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> n, tot;</span><br><span class="line">	<span class="keyword">int</span> lnk[N], nxt[N &lt;&lt; <span class="number">1</span>], son[N &lt;&lt; <span class="number">1</span>]; ll w1[N &lt;&lt; <span class="number">1</span>], w2[N &lt;&lt; <span class="number">1</span>];</span><br><span class="line">	<span class="keyword">int</span> dep[N], fa[N][H + <span class="number">1</span>]; Matrix dp[N][H + <span class="number">1</span>], pd[N][H + <span class="number">1</span>];</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">init</span> <span class="params">(<span class="keyword">int</span> _n)</span> </span>&#123;</span><br><span class="line">		n = _n, tot = <span class="number">1</span>, dep[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">		<span class="built_in">memset</span>(lnk, <span class="number">0</span>, <span class="keyword">sizeof</span> lnk);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">add</span> <span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, ll z1, ll z2)</span> </span>&#123;</span><br><span class="line">		nxt[++tot] = lnk[x], lnk[x] = tot, son[tot] = y, w1[tot] = z1, w2[tot] = z2;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">adde</span> <span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, ll z1, ll z2)</span> </span>&#123;</span><br><span class="line">		add(x, y, z1, z2), add(y, x, z1, z2);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">dfs</span> <span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">		fa[x][<span class="number">0</span>] = p, dep[x] = dep[p] + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = lnk[x]; j; j = nxt[j]) <span class="keyword">if</span> (son[j] != p) &#123;</span><br><span class="line">			dfs(son[j], x);</span><br><span class="line">			dp[son[j]][<span class="number">0</span>] = &#123;w1[j], min(w1[j] + D[x], D[son[j]] + w2[j]),</span><br><span class="line">							min(w1[j] + D[son[j]], D[x] + w2[j]), w2[j]&#125;;</span><br><span class="line">			pd[son[j]][<span class="number">0</span>] = &#123;w1[j], min(w1[j] + D[son[j]], D[x] + w2[j]),</span><br><span class="line">							min(w1[j] + D[x], D[son[j]] + w2[j]), w2[j]&#125;;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">build</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= H; ++j)</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">				fa[i][j] = fa[fa[i][j - <span class="number">1</span>]][j - <span class="number">1</span>];</span><br><span class="line">				dp[i][j] = dp[i][j - <span class="number">1</span>] * dp[fa[i][j - <span class="number">1</span>]][j - <span class="number">1</span>];</span><br><span class="line">				pd[i][j] = pd[fa[i][j - <span class="number">1</span>]][j - <span class="number">1</span>] * pd[i][j - <span class="number">1</span>];</span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">lca</span> <span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (dep[x] &lt; dep[y]) swap(x, y);</span><br><span class="line">		<span class="keyword">int</span> dif = dep[x] - dep[y];</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = H; ~j; --j)</span><br><span class="line">			<span class="keyword">if</span> (dif &gt;&gt; j &amp; <span class="number">1</span>) x = fa[x][j];</span><br><span class="line">		<span class="keyword">if</span> (x == y) <span class="keyword">return</span> x;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = H; ~j; --j)</span><br><span class="line">			<span class="keyword">if</span> (fa[x][j] != fa[y][j]) x = fa[x][j], y = fa[y][j];</span><br><span class="line">		<span class="keyword">return</span> fa[x][<span class="number">0</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">ll <span class="title">query</span> <span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> u, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">static</span> Matrix ans1, ans2, ans;</span><br><span class="line">		ans1 = &#123;<span class="number">0</span>, D[x], D[x], <span class="number">0</span>&#125;, ans2 = &#123;<span class="number">0</span>, D[y], D[y], <span class="number">0</span>&#125;;</span><br><span class="line">		<span class="keyword">int</span> z = lca(x, y), dif;</span><br><span class="line">		dif = dep[x] - dep[z];</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = H; ~j; --j) <span class="keyword">if</span> (dif &gt;&gt; j &amp; <span class="number">1</span>)</span><br><span class="line">			ans1 = ans1 * dp[x][j], x = fa[x][j];</span><br><span class="line">		dif = dep[y] - dep[z];</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = H; ~j; --j) <span class="keyword">if</span> (dif &gt;&gt; j &amp; <span class="number">1</span>)</span><br><span class="line">			ans2 = pd[y][j] * ans2, y = fa[y][j];</span><br><span class="line">		ans = ans1 * ans2;</span><br><span class="line">		<span class="keyword">return</span> ans.a[u][v];</span><br><span class="line">	&#125;</span><br><span class="line">&#125; T;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">	n = read(), G.init(n), T.init(n);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) G.adde(<span class="number">0</span>, i, readl());</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++i) &#123;</span><br><span class="line">		<span class="keyword">int</span> x = read(), y = read();</span><br><span class="line">		ll z1 = readl(), z2 = readl();</span><br><span class="line">		G.adde(x, y, z1 + z2), T.adde(x, y, z1, z2);</span><br><span class="line">	&#125;</span><br><span class="line">	G.sssp();</span><br><span class="line">	T.dfs(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">	T.build();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> _ = read(), x, y; _; --_) &#123;</span><br><span class="line">		x = read() + <span class="number">1</span>, y = read() + <span class="number">1</span>;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, T.query(x &gt;&gt; <span class="number">1</span>, y &gt;&gt; <span class="number">1</span>, x &amp; <span class="number">1</span>, y &amp; <span class="number">1</span>));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>不知为何全搞成long long才过。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-03-28T12:36:18.321Z" itemprop="dateUpdated">2019-03-28 20:36:18</time>
+</span>
+
+
+        
+        原文链接：<a href="/2019/03/28/cf1140G/" target="_blank" rel="external">http://WHchuan123.github.io/2019/03/28/cf1140G/</a>
+        
+    </div>
+    <footer>
+        <div onclick="location.href='http://WHchuan123.github.io'">
+            <img src="/img/avatar.jpg" alt="pinkex">
+            <a>pinkex</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/题解/">题解</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://WHchuan123.github.io/2019/03/28/cf1140G/&title=《cf1140G》 — psimonw&pic=http://WHchuan123.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://WHchuan123.github.io/2019/03/28/cf1140G/&title=《cf1140G》 — psimonw&source=none" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://WHchuan123.github.io/2019/03/28/cf1140G/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《cf1140G》 — psimonw&url=http://WHchuan123.github.io/2019/03/28/cf1140G/&via=http://WHchuan123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://WHchuan123.github.io/2019/03/28/cf1140G/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/03/25/zjoi2019R1游记/" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：zjoi2019R1游记">下一篇：zjoi2019R1游记</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+    
+
+    
+
+    
+
+
+</article>
+
+</div>
+
+        <footer class="footer">
+    <div class="footer-content">
+        <span class="power">
+            <i class="icon icon-lg icon-copyright"></i>
+            2019
+            <i class="icon icon-lg icon-heart"></i>
+            <a href="http://WHchuan123.github.io">WHchuan123.github.io</a>
+            <br>
+            Power by
+            <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
+            Theme
+            <a class="tomotoeslink" href="https://github.com/tomotoes/hexo-theme-tomotoes/" target="_blank" rel="external nofollow">tomotoes</a>
+        </span>
+
+        <br>
+
+        <span id="RunTime" style="color:#a7a7a2;"></span>
+        <br>
+
+        <span>
+            
+	<i class="icon icon-lg icon-user">
+<span id="busuanzi_container_site_uv" style="display:none">
+       访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>人</i>
+    ·
+    <i class="icon icon-lg icon-eye">
+    <span id="busuanzi_container_site_pv" style="display:none">
+      访问次数：<span id="busuanzi_value_site_pv"></span>
+    </span>次
+    </i>
+
+
+        </span>
+        <br>
+
+        <span class="license">This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+    </div>
+</footer>
+
+    </main>
+    
+        
+
+    
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://WHchuan123.github.io/2019/03/28/cf1140G/&title=《cf1140G》 — psimonw&pic=http://WHchuan123.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://WHchuan123.github.io/2019/03/28/cf1140G/&title=《cf1140G》 — psimonw&source=none" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://WHchuan123.github.io/2019/03/28/cf1140G/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《cf1140G》 — psimonw&url=http://WHchuan123.github.io/2019/03/28/cf1140G/&via=http://WHchuan123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://WHchuan123.github.io/2019/03/28/cf1140G/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p class="wechatshare">扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKUlEQVR42u3aQXLDIAwFUN//0u5M93a+JHvawGOVaVrgsVBB0nHE4/wd95+vvr36yf23xxsDAwPjaxnn7cg3dD/nfN0Pc2JgYGzASIJsvt1kzntYeR4MDAyMePk8vOaXSwwMDIw54z5ozp/BGBgYGPljcpIB6x3ZK29xDAyML2Q8VRh44/Mf1DcwMDD+GeMsjjwlNwnZ5V1hYGAszXgquZ9c155qsCjccDEwMJZg5Gn6JATfz9abITo4DAyMpRm9popekM3XytfFwMDYk5GE2qeeoL02jsvfx8DAWJSRXMKqgTK/XPaSdJdZQwwMjKUZ88dnnlzLk3Q5HgMDYwfG5H6Vt2jM//ayLQMDA2MDRq8YUA3BeQKu2tKBgYGxA2MecCdptd4j9pX/GxgYGF/FqG7rqcJn3n6BgYGxD+P+ctYLx3k5IS8SNHtGMDAwFmLMA26v5Ss/rMJ1EwMDY1FGsmQSKCdFyslOMDAw9mHkrRJ5OSG/AlbTcBgYGPsw8oV7wfTtpBsGBsZujGS7eYNFfn3MA/2H9zcGBsaijPzryfVuUqSsXhYxMDDWY5zFMS9tJq/qcnsHBgbG0ox85A1k1TDdOyYMDIzdGJNmrElibnI0HyqxGBgYizJ6DVvVtH7U4BWH/qO6IQwMjA0YeXPYpHiQH18z4GJgYGzAqLZN9B6o1WPFwMDYgZE/Ygt10SBN9tgTFwMDY2lG7+k4KXzmybhJcwYGBsYSjB+snfUbQAibCgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <!-- waves按钮特效 -->
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<!-- 主题配置脚本 -->
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+</script>
+
+<!-- jquery -->
+<script src="/js/jquery.min.js?v=3.0"></script>
+
+<!-- 搜索 -->
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item waves-block waves-effect" onclick="location.href='{path}'">
+    <div class="title ellipsis" title="{title}">{title}</div>
+</li>
+</template>
+
+
+<!-- main博客脚本 -->
+<script src="/js/main.min.js?v=3.0"></script>
+
+<!-- 动画&配置 -->
+<script src="/js/script.min.js?v=3.0"></script>
+
+<!-- 脚本管理 -->
+<script>
+
+if(window.innerWidth > 800){
+	/* 3D标题 */
+	$(".content-header").on("mousemove", threedee);
+
+	/* 底部追随鼠标 */
+	$(".footer").hover(2);
+
+	/* gotop键的涟漪 */
+	$("#gotop").hover(1);
+
+	/* 赞赏的粒子雨 */
+	$("#reward").hover(3);
+
+	/* 微信公众号的底部渲染 */
+	$("#wechat").hover(4);
+
+    /* 标题跳动 */
+    $(".archivestitle").bumpyText();
+
+	/* 图片点击放大 */
+	const postimg = jQuery(".post-content img:not(.github-emoji)");
+	postimg.on("click",function(){
+
+		mask.classList.add("in");
+		main.classList.add("Mask");
+		menu.classList.add("Mask");
+		var myimg = this.cloneNode(true);
+		myimg.classList.add("imgShow");
+
+		setTimeout(function(){
+			jQuery(myimg).animate({
+				opacity:"1"
+			},1000);
+		},0);
+
+		document.body.appendChild(myimg);
+
+		myimg.onclick=function(){
+			document.body.removeChild(myimg);
+			mask.classList.remove("in");
+			main.classList.remove("Mask");
+			menu.classList.remove("Mask");
+		};
+
+	});
+
+}
+
+/* 名字跳动 */
+$("#name").bumpyText();
+
+
+/* 网站运行时间 */
+setInterval(function () {
+	setTime("2019/3/16");
+}, 1000);
+
+/* 文章块的淡出 */
+postshow();
+
+/* 座右铭 */
+
+    elasticText({
+        id: "mymotto",
+        duration: 100,
+        effact: "easeOut",
+        content: ""
+    });
+
+
+
+/* 粘贴提示 */
+G($(".post-content"), location.href, "pinkex");
+
+
+/* 控制台 */
+if (window.console && window.console.log) {
+	setTimeout(function () {
+		console.log("\n %c 一个坏掉的番茄 %c  © Simon Ma  http://tomotoes.com \n\n", "color:#FFFFFB;background:#1abc9c;padding:5px 0;border-radius:.5rem 0 0 .5rem;", "color:#FFFFFB;background:#080808;padding:5px 0;border-radius:0 .5rem .5rem 0;");
+	}, 0);
+}
+
+</script>
+
+
+
+
+<!-- 公式渲染 -->
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+<!-- 不蒜子 -->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>
