@@ -6,13 +6,13 @@
     
     
     
-    <title>归档 | psimonw | go slowly</title>
+    <title>hdu6355 | psimonw | go slowly</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     
     <meta name="theme-color" content="#77AAFF">
     
     
-    <meta name="keywords" content="none">
+    <meta name="keywords" content="题解,数学">
     
     
 
@@ -39,17 +39,18 @@
 
 
     
-    <meta name="description" content="none">
-<meta name="keywords" content="none">
-<meta property="og:type" content="website">
-<meta property="og:title" content="psimonw">
-<meta property="og:url" content="http://WHchuan123.github.io/archives/index.html">
+    <meta name="description" content="题意 在一个nnn维有限超立方体中  题解">
+<meta name="keywords" content="题解,数学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hdu6355">
+<meta property="og:url" content="http://WHchuan123.github.io/2019/03/30/hdu6355/index.html">
 <meta property="og:site_name" content="psimonw">
-<meta property="og:description" content="none">
+<meta property="og:description" content="题意 在一个nnn维有限超立方体中  题解">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-30T14:05:43.529Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="psimonw">
-<meta name="twitter:description" content="none">
+<meta name="twitter:title" content="hdu6355">
+<meta name="twitter:description" content="题意 在一个nnn维有限超立方体中  题解">
     
         <link rel="alternate" type="application/atom+xml" title="psimonw" href="/atom.xml">
     
@@ -64,7 +65,7 @@
 
 <body>
     <div id="loading" class="active"></div>
-    <aside id="menu">
+    <aside id="menu" class="hide">
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -92,7 +93,7 @@
                   </a>
               </li>
             
-              <li class="waves-block waves-effect active">
+              <li class="waves-block waves-effect">
                   <a href="/archives">
                     <i class="icon icon-lg icon-archives"></i>
                     <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
@@ -147,7 +148,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">归档</div>
+        <div class="flex-col header-title ellipsis">hdu6355</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -164,7 +165,7 @@
         </a>
     </div>
 </header>
-<header class="content-header archives-header">
+<header class="content-header post-header">
     
     
     <div class="container fade-scale">
@@ -174,7 +175,6 @@
             </h1>
             <h5 class="subtitle">
                 
-                    <h1 class="archivestitle">Archive</h1>
                 
             </h5>
         </div>
@@ -182,304 +182,154 @@
 
 </header>
 
-<div class="container body-wrap fade">
-    
 
+<div class="container body-wrap">
     
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#题意"><span class="post-toc-text"> 题意</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#题解"><span class="post-toc-text"> 题解</span></a></li></ol>
+        </nav>
+    </aside>
+   
+<article id="post-hdu6355" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">hdu6355</h1>
+        <div class="post-meta">
+            <i class="icon icon-lg icon-calendar-o"></i>
+            发表于
+            <time class="post-time" title="2019-03-30 22:01:24" datetime="2019-03-30T14:01:24.422Z" itemprop="datePublished">2019-03-30</time>
+
+            <br id="mybreak">
             
-            <h3 class="archive-separator">
-                <i class="icon icon-lg icon-folder-o"></i>&nbsp;&nbsp;
-                2019
-            </h3>
-            <div class="waterfall">
-    
+	<i class="icon icon-lg icon-folder-o"></i>
+	分类：<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/OI/">OI</a></li></ul>
 
-        <article class="archive-article" onclick="location.href='/2019/03/30/hdu6355/'">
-    <div class="archive-article-date">
-      
-      <time class="my-post-time">
-        <i class="icon icon-lg icon-file-text-o"></i>
-        &nbsp;
-          03-30
-      </time>
+
+            <i>·</i>
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>次浏览
+</span>
+
+
+        </div>
+        <div class="post-count-custom">
+            <i class="icon icon-lg icon-comment-o"></i>
+            阅读本文可能花费您&nbsp;<span class="post-count">1</span>&nbsp;分钟
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="题意"><a class="markdownIt-Anchor" href="#题意"></a> 题意</h1>
+<p>在一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>维有限超立方体中</p>
+<h1 id="题解"><a class="markdownIt-Anchor" href="#题解"></a> 题解</h1>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-03-30T14:05:43.529Z" itemprop="dateUpdated">2019-03-30 22:05:43</time>
+</span>
+
+
+        
+        原文链接：<a href="/2019/03/30/hdu6355/" target="_blank" rel="external">http://WHchuan123.github.io/2019/03/30/hdu6355/</a>
+        
     </div>
-    <div class="archive-article-inner">
-      
+    <footer>
+        <div onclick="location.href='http://WHchuan123.github.io'">
+            <img src="/img/avatar.jpg" alt="pinkex">
+            <a>pinkex</a>
+        </div>
+    </footer>
+</blockquote>
+
+        
 
 
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/2019/03/30/hdu6355/">hdu6355</a>
-    </h3>
-  
-
-
-
-      
+        <div class="post-footer">
+            
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数学/">数学</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/题解/">题解</a></li></ul>
 
-    </div>
-  </article>
 
+            
+<div class="page-share-wrap">
     
 
-        <article class="archive-article" onclick="location.href='/2019/03/30/hdu6360/'">
-    <div class="archive-article-date">
-      
-      <time class="my-post-time">
-        <i class="icon icon-lg icon-file-text-o"></i>
-        &nbsp;
-          03-30
-      </time>
-    </div>
-    <div class="archive-article-inner">
-      
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/2019/03/30/hdu6360/">hdu6360</a>
-    </h3>
-  
-
-
-
-      
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数学/">数学</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/题解/">题解</a></li></ul>
-
-    </div>
-  </article>
-
-    
-
-        <article class="archive-article" onclick="location.href='/2019/03/29/hdu6352/'">
-    <div class="archive-article-date">
-      
-      <time class="my-post-time">
-        <i class="icon icon-lg icon-file-text-o"></i>
-        &nbsp;
-          03-29
-      </time>
-    </div>
-    <div class="archive-article-inner">
-      
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/2019/03/29/hdu6352/">hdu6352</a>
-    </h3>
-  
-
-
-
-      
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数学/">数学</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/题解/">题解</a></li></ul>
-
-    </div>
-  </article>
-
-    
-
-        <article class="archive-article" onclick="location.href='/2019/03/29/cf1136E/'">
-    <div class="archive-article-date">
-      
-      <time class="my-post-time">
-        <i class="icon icon-lg icon-file-text-o"></i>
-        &nbsp;
-          03-29
-      </time>
-    </div>
-    <div class="archive-article-inner">
-      
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/2019/03/29/cf1136E/">cf1136E</a>
-    </h3>
-  
-
-
-
-      
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/题解/">题解</a></li></ul>
-
-    </div>
-  </article>
-
-    
-
-        <article class="archive-article" onclick="location.href='/2019/03/29/cf1139F/'">
-    <div class="archive-article-date">
-      
-      <time class="my-post-time">
-        <i class="icon icon-lg icon-file-text-o"></i>
-        &nbsp;
-          03-29
-      </time>
-    </div>
-    <div class="archive-article-inner">
-      
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/2019/03/29/cf1139F/">cf1139F</a>
-    </h3>
-  
-
-
-
-      
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/题解/">题解</a></li></ul>
-
-    </div>
-  </article>
-
-    
-
-        <article class="archive-article" onclick="location.href='/2019/03/28/cf1140G/'">
-    <div class="archive-article-date">
-      
-      <time class="my-post-time">
-        <i class="icon icon-lg icon-file-text-o"></i>
-        &nbsp;
-          03-28
-      </time>
-    </div>
-    <div class="archive-article-inner">
-      
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/2019/03/28/cf1140G/">cf1140G</a>
-    </h3>
-  
-
-
-
-      
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/题解/">题解</a></li></ul>
-
-    </div>
-  </article>
-
-    
-
-        <article class="archive-article" onclick="location.href='/2019/03/25/zjoi2019R1游记/'">
-    <div class="archive-article-date">
-      
-      <time class="my-post-time">
-        <i class="icon icon-lg icon-file-text-o"></i>
-        &nbsp;
-          03-25
-      </time>
-    </div>
-    <div class="archive-article-inner">
-      
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/2019/03/25/zjoi2019R1游记/">zjoi2019R1游记</a>
-    </h3>
-  
-
-
-
-      
-    </div>
-  </article>
-
-    
-
-        <article class="archive-article" onclick="location.href='/2019/03/21/随感/'">
-    <div class="archive-article-date">
-      
-      <time class="my-post-time">
-        <i class="icon icon-lg icon-file-text-o"></i>
-        &nbsp;
-          03-21
-      </time>
-    </div>
-    <div class="archive-article-inner">
-      
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/2019/03/21/随感/">随感</a>
-    </h3>
-  
-
-
-
-      
-    </div>
-  </article>
-
-    
-
-        <article class="archive-article" onclick="location.href='/2019/03/17/共勉/'">
-    <div class="archive-article-date">
-      
-      <time class="my-post-time">
-        <i class="icon icon-lg icon-file-text-o"></i>
-        &nbsp;
-          03-17
-      </time>
-    </div>
-    <div class="archive-article-inner">
-      
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/2019/03/17/共勉/">共勉</a>
-    </h3>
-  
-
-
-
-      
-    </div>
-  </article>
-
-    
-
-        <article class="archive-article" onclick="location.href='/2019/03/16/websites/'">
-    <div class="archive-article-date">
-      
-      <time class="my-post-time">
-        <i class="icon icon-lg icon-file-text-o"></i>
-        &nbsp;
-          03-16
-      </time>
-    </div>
-    <div class="archive-article-inner">
-      
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a href="/2019/03/16/websites/">websites</a>
-    </h3>
-  
-
-
-
-      
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网站/">网站</a></li></ul>
-
-    </div>
-  </article>
-
-    
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://WHchuan123.github.io/2019/03/30/hdu6355/&title=《hdu6355》 — psimonw&pic=http://WHchuan123.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://WHchuan123.github.io/2019/03/30/hdu6355/&title=《hdu6355》 — psimonw&source=none" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://WHchuan123.github.io/2019/03/30/hdu6355/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《hdu6355》 — psimonw&url=http://WHchuan123.github.io/2019/03/30/hdu6355/&via=http://WHchuan123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://WHchuan123.github.io/2019/03/30/hdu6355/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
     </div>
 
     
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/03/30/hdu6360/" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：hdu6360">下一篇：hdu6360</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+    
+
+    
+
+    
+
+
+</article>
+
 </div>
 
         <footer class="footer">
@@ -524,8 +374,57 @@
 
     </main>
     
+        
+
+    
     <div class="mask" id="mask"></div>
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://WHchuan123.github.io/2019/03/30/hdu6355/&title=《hdu6355》 — psimonw&pic=http://WHchuan123.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://WHchuan123.github.io/2019/03/30/hdu6355/&title=《hdu6355》 — psimonw&source=none" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://WHchuan123.github.io/2019/03/30/hdu6355/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《hdu6355》 — psimonw&url=http://WHchuan123.github.io/2019/03/30/hdu6355/&via=http://WHchuan123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://WHchuan123.github.io/2019/03/30/hdu6355/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p class="wechatshare">扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACI0lEQVR42u3aS24CQQwFQO5/6YmUVSQC8bMZFDzVK5QA09UL40/fbuV1fK+fr3/+5f6d6X+Pu3U7Y2FgYHws43i67hmv2tajo3n+94ffiYGBcQFG5THvCdD148PAwMCobKUSoNPAjYGBgTEPuBXSJPXEwMDAmBSxzx9Qb5bVD+iUWhwDA+MDGb2i9D2vT59vYGBg/HvGMV6T1lsvlfzlsxgYGKsZaUqXbq6eXFYSzT92iIGBsZSRfrgCnl+tiI8SAwNjNaMedntXJerpYO+KRvzrgYGB8YGMR4+cPz5t9KeHVUoNMTAwVjBe1cSvp331Rls6ZMXAwNjKmGw6be73ktFS8w4DA2M1o/7INLz2vrkSdjEwMDB67bMeNR1C/FHuYmBgLGWkDa90MDC5fhEkixgYGBdjTIYHkwsTlfI4CLgYGBiLGOmViHoaVw/Tk/dgYGBch1EpWXvs+jihF6YxMDCuw0hDajoGmB9NDMbAwFjKqG+uNzyYBOh6MoqBgbGVEbe0woFlOlSoDxKC3woMDIwVjPNaZunI4WX9QgwMjEWMXplaHwlMAnp8fBgYGOsYR7gmg4SUHRSxGBgYqxmTkWE9HNc3mgZoDAyM6zDmQbYSUntBuTm8xMDAWMqYX7zohdEXV+EYGBgY4cPSAjU9LAwMDIx62VnfyiR9DO6MYGBgLGXUr2T1AmVvo6fU4hgYGB/ISAcDcShsDSB7QwUMDIx1jC8UGomHuHX7SgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
 
 
     <!-- waves按钮特效 -->
